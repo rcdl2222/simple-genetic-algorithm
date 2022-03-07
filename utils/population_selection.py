@@ -20,7 +20,11 @@ def roulette_wheel_selection(current, binary=True):
     for v in current:
         if binary:
             v = int(v, 2)
-        fitness_array.append(fitness(v))
+        fitness_value = fitness(v)
+        if fitness_value < 0:
+            fitness_array.append(0)
+        else:
+            fitness_array.append(fitness_value)
     prob_array = [i/sum(fitness_array) for i in fitness_array]
     for i in range(size):
         new_population.append(np.random.choice(current, p=prob_array))
