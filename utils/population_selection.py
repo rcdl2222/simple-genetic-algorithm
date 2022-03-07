@@ -31,6 +31,16 @@ def roulette_wheel_selection(current, binary=True):
     return new_population
 
 def generate_new_population(current):
+    """
+    Generate a new population based on the current
+    population
+
+    Parameters:
+        current: list of strings of current population
+
+    Returns:
+        list of strings of new population
+    """
     current = roulette_wheel_selection(current)
     new_population = []
     while current != []:
