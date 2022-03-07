@@ -8,12 +8,14 @@ if __name__ == "__main__":
     size = int(input("Enter population size: \n"))
     population = list(map(np.binary_repr, np.random.randint(low=0, high=64, size=size)))
     int_pop = list(map(lambda x: int(x, 2), population))
-    max_values = [max(int_pop)]    
+    mean_values = [sum(int_pop)/len(int_pop)]    
+    print("Starting values:") 
     print(int_pop)
     for i in tqdm(range(10000)):
         population = generate_new_population(population)
         int_pop = list(map(lambda x: int(x, 2), population))
-        max_values.append(max(int_pop))
+        mean_values.append(sum(int_pop)/len(int_pop))
+    print("Terminating values:") 
     print(int_pop)
-    plt.plot(max_values)
+    plt.plot(mean_values)
     plt.show()
