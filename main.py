@@ -6,13 +6,14 @@ from tqdm import tqdm
 if __name__ == "__main__":
     np.random.seed(42)
     size = int(input("Enter population size: \n"))
+    crossover = int(input("Enter 1 for single-point crossover; 2 for double-point: \n"))
     population = list(map(lambda x: np.binary_repr(x, width=7), np.random.randint(low=0, high=64, size=size)))
     int_pop = list(map(lambda x: int(x, 2), population))
     mean_values = [sum(int_pop)/len(int_pop)]    
     print("Starting values:") 
     print(int_pop)
     for i in tqdm(range(20000)):
-        population = generate_new_population(population)
+        population = generate_new_population(population, crossover=crossover)
         int_pop = list(map(lambda x: int(x, 2), population))
         mean_values.append(sum(int_pop)/len(int_pop))
     print("Terminating values:") 

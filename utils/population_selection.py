@@ -1,6 +1,6 @@
 import numpy as np
 from .fitness import fitness
-from .crossover import single_point_crossover
+from .crossover import single_point_crossover, double_point_crossover
 from .mutation import mutate_binary
 
 def roulette_wheel_selection(current, binary=True):
@@ -8,11 +8,11 @@ def roulette_wheel_selection(current, binary=True):
     Do roulette wheel selection on current population
     
     Parameters:
-        current: current population
+        current: list of strings of current population
         binary: if strings in population are binary
     
     Returns:
-        new population after selection
+        list of strings of new population after selection
     """
     size = len(current)
     fitness_array = []
@@ -30,7 +30,7 @@ def roulette_wheel_selection(current, binary=True):
         new_population.append(np.random.choice(current, p=prob_array))
     return new_population
 
-def generate_new_population(current):
+def generate_new_population(current, crossover=1):
     """
     Generate a new population based on the current
     population
@@ -51,7 +51,10 @@ def generate_new_population(current):
             s1 = current.pop(ind1)
             ind2 = np.random.randint(len(current))
             s2 = current.pop(ind2)
-            new_population.extend(single_point_crossover(s1, s2))
+            if crossover == 1:
+                new_population.extend(single_point_crossover(s1, s2))
+            else:
+                new_population.extend(double_point_crossover(s1, s2))
     for i in range(len(new_population)):
         new_population[i] = mutate_binary(new_population[i])
     return new_population
