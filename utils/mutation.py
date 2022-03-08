@@ -7,7 +7,7 @@ def mutate_binary(s, p=0.001) -> str:
 
     Type of mutation: flipping of bits
     
-    Parameters:
+    Args:
         s: string to be mutated
         p: probability of mutation
         

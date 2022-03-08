@@ -5,7 +5,7 @@ def single_point_crossover(s1, s2, p=0.6):
     Given 2 strings, do a single-point
     crossover
 
-    Parameters:
+    Args:
         s1, s2: strings to be crossed-over
         p: probability of crossover
     
@@ -22,10 +22,10 @@ def single_point_crossover(s1, s2, p=0.6):
 
 def double_point_crossover(s1, s2, p=0.6):
     """
-    Given 2 strings, do a single-point
+    Given 2 strings, do a double-point
     crossover
 
-    Parameters:
+    Args:
         s1, s2: strings to be crossed-over
         p: probability of crossover
     

@@ -7,7 +7,7 @@ def roulette_wheel_selection(current, binary=True):
     """
     Do roulette wheel selection on current population
     
-    Parameters:
+    Args:
         current: list of strings of current population
         binary: if strings in population are binary
     
@@ -35,7 +35,7 @@ def generate_new_population(current, crossover=1):
     Generate a new population based on the current
     population
 
-    Parameters:
+    Args:
         current: list of strings of current population
 
     Returns:
